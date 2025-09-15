@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user/login.css') }}">
+<title>Login Page</title>
+{% endblock %}
+
+
+{% block content %}
+<div>
+    <section class="leftPanel">
+        <h2>Login</h2>
+        <form action="" method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.userName.label }} {{ form.userName }}<br>
+
+            {% for error in form.userName.errors %}
+            <span class="error">{{ error }}</span>
+            {% endfor %}
+
+            {{ form.password.label }} {{ form.password }} <br>
+
+            {% for error in form.password.errors %}
+            <span class="error">{{ error }}</span>
+            {% endfor %}
+            <span class="error">{{ errorMessage }}</span>
+
+            {{ form.submit }}
+        </form>
+        <p>Don't have an account? <a href="{{ url_for('register') }}" class="text">Register here</a></p>
+
+    </section>
+    <section class="rightPanel">
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,118 @@
+h1 {
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 1em;
+  margin-bottom: 1em;
+}
+
+h3 p {
+  margin-left: 8em;
+}
+
+h4 {
+  margin-bottom: 1em;
+}
+
+span span p {
+  font-size: 0.5em;
+}
+
+.rightPanel {
+  background-color: var(--Main-bg-color);
+  border-radius: 4em;
+  padding: 2em 0 0em 4em;
+  width: 50%;
+  margin-left: -10em;
+}
+
+.leftPanel {
+  width: 50%;
+  padding: 2em 4em 0em 4em;
+}
+
+.cardInfo {
+  margin-bottom: 2em;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  padding: 2em;
+  border-radius: 2em;
+  width: 25em;
+  height: 15em;
+  gap: 3em;
+}
+
+.card span {
+  font-size: 2em;
+}
+
+.card p {
+  display: inline;
+}
+
+.transactions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5em;
+  width: 80%;
+}
+
+.stats {
+  width: 100%;
+}
+.stats div {
+  width: 100%;
+  margin-bottom: 3em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5em;
+  justify-items: center;
+}
+
+.stats div section {
+  background-color: #1e1e1e;
+  padding: 2em;
+  border-radius: 2em;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 18em;
+}
+
+.block {
+  background-color: #1e1e1e;
+  padding: 1em;
+  border-radius: 1em;
+  width: 100%;
+}
+
+.block h5 {
+  margin-bottom: 1em;
+}
+
+.block p {
+  margin-bottom: 1em;
+  font-size: 1.5em;
+}
+
+.block p span {
+  font-size: 0.75em;
+}
+
+.viewMore {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.viewMore p {
+  font-size: 1em;
+}

@@ -1,0 +1,110 @@
+.transferInput {
+  margin: 1em;
+  padding: 1em;
+  border-radius: 3em;
+}
+
+.transferDetails {
+  padding: 1em;
+}
+
+.transferDetails section {
+  margin-bottom: 1em;
+}
+.transferDetails form {
+  display: flex;
+  justify-content: center;
+}
+
+form div {
+  display: flex;
+  flex-direction: row;
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  row-gap: 1em;
+  padding: 1em;
+}
+
+.formContainer div:last-child {
+  justify-content: center;
+}
+#submit {
+  width: 10em;
+}
+
+#currency {
+  width: 5em;
+}
+
+.formContainer input,
+.formContainer select,
+.formContainer textarea {
+  width: 16em;
+  box-sizing: border-box;
+}
+
+.senderInfo {
+  padding: 1em;
+  background-color: #1e1e1e;
+  border-radius: 1em;
+  width: 45%;
+}
+.senderInfo p {
+  margin-bottom: 1em;
+}
+.moneyInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.moneyInfo section {
+  background-color: #1e1e1e;
+  padding: 1em;
+  width: 25%;
+  border-radius: 1em;
+}
+
+.moneyInfo span {
+  font-size: 2em;
+}
+
+.text {
+  font-size: 0.8em;
+  color: #aaaaaa;
+}
+
+.progressContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+.step {
+  width: 20%;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: lightgray;
+}
+.active {
+  background-color: green;
+  color: white;
+}
+.content {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.userData {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+h2 {
+  margin-bottom: 0.5em;
+}

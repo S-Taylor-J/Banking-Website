@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user/dashboard.css') }}">
+<title>Credits</title>
+{% endblock %}
+
+{% block content %}
+<div class="leftPanel">
+
+  <section>
+    <h1>Inspiration</h1>
+    <ul>
+      <li>User list Page -> account freeze UI - Dan Bokete</li>
+      <li>Transaction Page -> Pagination - Dan Bokete</li>
+      <li>Settings Page -> Flash - Dan Bokete</li>
+    </ul>
+  </section>
+  <section>
+    <h1>Code From other Sources</h1>
+    <ul>
+      <li>How to animate flash is from -> https://flask.palletsprojects.com/en/stable/patterns/flashing/</li>
+      <li>pagination was implemented with the help of Flask Pagination without SQLAlchemy [duplicate] ->
+        https://stackoverflow.com/questions/74520043/flask-pagination-without-sqlalchemy</li>
+    </ul>
+  </section>
+
+</div>
+
+
+{% endblock %}

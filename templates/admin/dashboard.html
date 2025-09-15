@@ -1,0 +1,101 @@
+{% extends 'admin/base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin/dashboard.css') }}">
+<title>Admin Dashboard</title>
+{% endblock %}
+
+{% block content %}
+<div class="background">
+    <div class="leftPanel">
+        <h1>Welcome Admin</h1>
+        <section>
+            <h2>User Information</h2>
+            <section>
+                <div>
+                    <h3>Total Accounts</h3>
+                    <p>{{ totalUsers['totalUsers'] }}</p>
+                </div>
+                <div>
+                    <h3>Active Accounts</h3>
+                    <p>{{ activeUsers['activeUsers'] }}</p>
+                </div>
+                <div>
+                    <h3>Frozen Accounts</h3>
+                    <p>{{ frozenUsers['frozenUsers'] }}</p>
+                </div>
+                <div>
+                    <h3>Accounts Registered This Month</h3>
+                    <p>{{ user['registeredUser'] }}</p>
+                </div>
+            </section>
+            <h2>Transaction Information</h2>
+            <section class="transactionInfo">
+                <section>
+                    <h2>This Week</h2>
+                    <div>
+                        <h3>Amount Transferred</h3>
+                        {% if weeklyTransaction['weeklyBalance'] is not none %}
+                        <p>{{ "{:,.2f}".format(weeklyTransaction['weeklyBalance']) }}</p>
+                        {% else %}
+                        <p>0</p>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <h3>Number of Transactions</h3>
+                        <p>{{ weeklyTransaction['numTransactions'] }}</p>
+                    </div>
+                </section>
+                <section>
+                    <h2>This Month</h2>
+                    <div>
+                        <h3>Amount Transferred</h3>
+                        {% if monthlyTransactions['monthlyBalance'] is not none %}
+                        <p>{{ "{:,.2f}".format(monthlyTransactions['monthlyBalance']) }}</p>
+                        {% else %}
+                        <p>0</p>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <h3>Number of Transactions</h3>
+                        <p>{{ monthlyTransactions['numTransactions'] }}</p>
+                    </div>
+                </section>
+                <section>
+                    <h2>Last Month</h2>
+                    <div>
+                        <h3>Amount Transferred</h3>
+                        {% if lastMonthTransactions['monthlyBalance'] is not none %}
+                        <p>{{ "{:,.2f}".format(lastMonthTransactions['monthlyBalance']) }}</p>
+                        {% else %}
+                        <p>0.00</p>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <h3>Number of Transactions</h3>
+                        <p>{{ lastMonthTransactions['numTransactions'] }}</p>
+                    </div>
+                </section>
+                <section>
+                    <h2>All Time</h2>
+                    <div>
+                        <h3>Amount Transferred</h3>
+                        {% if transaction['totalBalance '] is not none %}
+                        <p>{{ "{:,.2f}".format(transaction['totalBalance']) }}</p>
+                        {% else %}
+                        <p>0</p>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <h3>Number of Transactions</h3>
+                        <p>{{ weeklyTransaction['numTransactions'] }}</p>
+                    </div>
+                </section>
+
+            </section>
+        </section>
+    </div>
+</div>
+
+
+{% endblock %}

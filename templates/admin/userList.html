@@ -1,0 +1,62 @@
+{% extends 'admin/base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin/userList.css') }}">
+<title>Admin Dashboard</title>
+{% endblock %}
+
+
+{% block content %}
+<div class="background">
+
+    <div class="leftPanel">
+        <h1>User List</h1>
+        <section>
+            <table>
+                <tr>
+                    <th scope="col">UserID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">DOB</th>
+                    <th scope="col">Currency</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Freeze</th>
+                </tr>
+                <tr>
+                    {% if users %}
+                    {% for user in users %}
+                    <td>{{ user['userId'] }}</td>
+                    <td class="clickable"><a href="{{ url_for('viewUser', userId=user['userId']) }}">{{
+                            user['firstName'] }}
+                            {{user['lastName'] }}</a></td>
+                    <td>{{ user['email'] }}</td>
+                    <td>{{ user['phoneNum'] }}</td>
+                    <td>{{ user['dob'] }}</td>
+                    <td>{{ user['currency'] }}</td>
+                    <td>{{ user['country'] }}</td>
+
+                    <td>
+                        {% if user['freezeAccount'] == 0 %}
+                        <a href="{{ url_for('adminFreezeUser', userId=user['userId']) }}"><span
+                                class="material-symbols-outlined">
+                                block
+                            </span></a>
+
+                        {% else %}
+                        <a href="{{ url_for('adminUnfreezeUser', userId=user['userId']) }}"><span
+                                class="material-symbols-outlined">
+                                add
+                            </span></a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </table>
+        </section>
+    </div>
+</div>
+
+
+{% endblock %}

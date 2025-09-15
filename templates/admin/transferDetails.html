@@ -1,0 +1,65 @@
+{% extends "admin/base.html" %}
+
+{% block head %}
+<title>Transfer Page</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin/transfer.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="background">
+    <div class="leftPanel">
+        <h1>Transfer Money</h1>
+        <div class="transferInput">
+            <div class="progressContainer">
+                <div class="step {% if step >= 1 %}active{% endif %}">Step 1</div>
+                <div class="step {% if step >= 2 %}active{% endif %}">Step 2</div>
+                <div class="step {% if step >= 3 %}active{% endif %}">Step 3</div>
+
+            </div>
+            <div class="transferDetails">
+                <h2>Transfer Details</h2>
+                <section class="userData">
+                    <section class="senderInfo">
+                        <h2>Sender Info</h2>
+                        <p>{{ sender['userName'] }}</p>
+                        <p>{{ sender['userId'] }}</p>
+                        <p>{{ sender['cardDetails'] }}</p>
+                        <p>{{ sender['description'] }}</p>
+                        <p>{{ sender['additionalInfo'] }}</p>
+                        <p>{{ sender['recipientEmail'] }}</p>
+                    </section>
+                    <section class="senderInfo">
+                        <h2>Receiver Info</h2>
+                        <p>{{ receiver['userName'] }}</p>
+                        <p>{{ receiver['userId'] }}</p>
+                        <p>{{ receiver['cardDetails'] }}</p>
+                        <p>{{ receiver['description'] }}</p>
+                        <p>{{ receiver['additionalInfo'] }}</p>
+                        <p>{{ receiver['recipientEmail'] }}</p>
+                    </section>
+                </section>
+                <section>
+                    <div class="moneyInfo">
+                        <section>
+                            <p class="text">Amount</p>
+                            <p><span>{{ sender['amount'] }}</span>
+                                {{ sender['toCurrency'] }}</p>
+                        </section>
+                        <section>
+                            <p class="text">Transaction Fee</p>
+                            <p><span>{{ "{:,.2f}".format(sender['fee']) }}</span> {{senderAccount['currency']}}</p>
+                        </section>
+                        <section>
+                            <p class="text">Transfer Date</p>
+                            <p><span>{{ sender['transactionDate'] }}</span></p>
+                        </section>
+                    </div>
+                </section>
+
+
+                <form action="{{ url_for('adminConfirm') }}" method="POST">
+                    <button type="submit" id="submit">Confirm Transaction</button>
+                </form>
+            </div>
+        </div>
+        {% endblock %}

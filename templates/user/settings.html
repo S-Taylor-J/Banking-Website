@@ -1,0 +1,64 @@
+{% extends "user/base.html" %}
+
+{% block head %}
+<title>Settings</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user/settings.css') }}">
+
+{% endblock %}
+
+{% block content %}
+<div class="background">
+    <div class="leftPanel">
+        <h1>Settings</h1>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="flashes">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        <form action="" method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            {{ form.firstName.label }} {{ form.firstName }}<br>
+            {{ form.lastName.label }} {{ form.lastName }}<br>
+            {{ form.userName.label }} {{ form.userName }} <br>
+            {% for error in form.userName.errors %}
+            <span class="error">{{ error }}</span>
+            {% endfor %}
+            {{ form.dob.label }} {{ form.dob }}<br>
+            {% for error in form.dob.errors %}
+            <span class="error">{{ error }}</span>
+            {% endfor %}
+            {{ form.phoneNum.label }} {{ form.phoneNum }}<br>
+            {% for error in form.phoneNum.errors %}
+            <span class="error">{{ error }}</span>
+            {% endfor %}
+            {{ form.email.label }} {{ form.email }}<br>
+            {% for error in form.email.errors %}
+            <span class="error">{{ error }}</span>
+            {% endfor %}
+            {{ form.currency.label }} {{ form.currency }}<br>
+            {{ form.homeAddress.label }} {{ form.homeAddress }}<br>
+            {{ form.city.label }} {{ form.city }}<br>
+            {{ form.county.label }} {{ form.county }}<br>
+            {{ form.postalCode.label }} {{ form.postalCode }}<br>
+            {{ form.country.label }} {{ form.country }}<br>
+            {{ form.password.label }} {{ form.password }}<br>
+            {% for error in form.password.errors %}
+            <span class="error">{{ error }}</span>
+            {% endfor %}
+            {{ form.confirmPassword.label }} {{ form.confirmPassword }}<br>
+            {% for error in form.confirmPassword.errors %}
+            <span class="error">{{ error }}</span>
+            {% endfor %}
+            {{ form.submit() }}
+        </form>
+
+
+
+    </div>
+</div>
+
+{% endblock %}

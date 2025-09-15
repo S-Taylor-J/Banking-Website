@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Transfer Page</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin/transfer.css') }}">
+{% endblock %}
+
+
+
+{% block content %}
+<div class="background">
+    <nav>
+        <ul>
+            <li><span class="material-symbols-outlined">
+                    savings
+                </span></li>
+            <li><a href="{{ url_for('adminDashboard') }}"><span class="material-symbols-outlined">
+                        dashboard
+                    </span></a></li>
+            <li><a href="{{ url_for('adminUsers') }}"><span class="material-symbols-outlined">
+                        group
+                    </span></a></li>
+            <li><a href="{{ url_for('adminTransactions') }}"><span class="material-symbols-outlined">
+                        contract
+                    </span></a></li>
+            <li><a href=""><span class="material-symbols-outlined">
+                        payments
+                    </span></a></li>
+        </ul>
+        <a href="{{ url_for('logout') }}"><span class="material-symbols-outlined">
+                logout
+            </span></a>
+    </nav>
+    <div class="leftPanel">
+        <h1>Transfer Money</h1>
+        <div class="transferInput">
+            <div class="progressContainer">
+                <div class="step {% if step >= 1 %}active{% endif %}">Step 1</div>
+                <div class="step {% if step >= 2 %}active{% endif %}">Step 2</div>
+                <div class="step {% if step >= 3 %}active{% endif %}">Step 3</div>
+            </div>
+            <h2>Sender Information</h2>
+            <form action="" method="POST" class="formContainer" novalidate>
+                {{ sForm.hidden_tag() }}
+                <div>{{ sForm.userName }}</div>
+                {% for error in sForm.userName.errors %}
+                <span class="error">{{ error }}</span>
+                {% endfor %}
+                <div>{{ sForm.cardDetails }}</div>
+                <div>{{ sForm.userId }}</div>
+                <div>{{ sForm.amount }} {{ sForm.currency }}</div>
+                {% if sForm.amount.errors %}
+                {% for error in sForm.amount.errors %}
+                <span class="error">{{ error }}</span>
+                {% endfor %}
+                {% endif %}
+                <div>{{ sForm.destinationCountry }}</div>
+                <div>{{ sForm.description }} </div>
+                <div>{{ sForm.additionalInfo }}</div>
+                <div>{{ sForm.submit }}</div>
+                <span class="error">{{ message }}</span>
+            </form>
+        </div>
+        {% endblock %}

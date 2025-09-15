@@ -1,0 +1,34 @@
+{% extends "admin/base.html" %}
+
+{% block head %}
+<title>Transfer Page</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin/transfer.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="background">
+    <div class="leftPanel">
+        <h1>Transfer Money</h1>
+        <div class="transferInput">
+            <div class="progressContainer">
+                <div class="step {% if step >= 1 %}active{% endif %}">Step 1</div>
+                <div class="step {% if step >= 2 %}active{% endif %}">Step 2</div>
+                <div class="step {% if step >= 3 %}active{% endif %}">Step 3</div>
+            </div>
+            <h2>Receiver Information</h2>
+            <form action="" method="POST" class="formContainer" novalidate>
+                {{ rForm.hidden_tag() }}
+                <div>{{ rForm.userName }}</div>
+                {% for error in rForm.userName.errors %}
+                <span class="error">{{ error }}</span>
+                {% endfor %}
+                <div>{{ rForm.cardDetails }}</div>
+                <div>{{ rForm.userId }}</div>
+                <div>{{ rForm.recipientEmail }}</div>
+                <div>{{ rForm.submit }}</div>
+                <span class="error">{{ message }}</span>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+#currency {
+  width: 90%;
+  grid-column: span 2;
+}
+div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.leftPanel {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+p {
+  grid-column: span 2;
+}
+p a {
+  font-size: 1em;
+  color: #007bff;
+}
+
+form {
+  padding: 1em;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+}
+
+h2 {
+  width: 90%;
+  text-align: center;
+  color: #ffffff;
+  grid-column: span 2;
+  margin: 5em 0 2em 0;
+}
+
+label,
+input,
+select {
+  grid-column: span 2;
+}
+
+input,
+select {
+  background-color: black;
+  border-top: black;
+  border-left: black;
+}

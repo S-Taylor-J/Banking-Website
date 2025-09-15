@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+<title>Register PAGE</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user/register.css') }}">
+
+
+{% endblock %}
+
+{% block content %}
+<div>
+    <section class="leftPanel"></section>
+    <section class="rightPanel">
+        <h2>Register</h2>
+        <form action="" method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.firstName.label }} {{ form.firstName(size=20) }}<br>
+            {{ form.lastName.label }} {{ form.lastName(size=20) }}<br>
+            {{ form.userName.label }} {{ form.userName }} <br>
+            {{ form.dob.label }} {{ form.dob(id="dob") }}<br>
+            {% for error in form.dob.errors %}
+            <span class="error">{{ error }}</span>
+            {% endfor %}
+            {{ form.phoneNum.label }} {{ form.phoneNum }}<br>
+            {% for error in form.phoneNum.errors %}
+            <span class="error">{{ error }}</span>
+            {% endfor %}
+            {{ form.email.label }} {{ form.email }}<br>
+            {{ form.currency.label }} {{ form.currency }}<br>
+            {{ form.homeAddress.label }} {{ form.homeAddress }}<br>
+            {{ form.city.label }} {{ form.city }}<br>
+            {{ form.county.label }} {{ form.county }}<br>
+            {{ form.postalCode.label }} {{ form.postalCode }}<br>
+            {{ form.country.label }} {{ form.country }}<br>
+            {{ form.password.label }} {{ form.password }}<br>
+            {% for error in form.password.errors %}
+            <span class="error">{{ error }}</span>
+            {% endfor %}
+            {{ form.confirmPassword.label }} {{ form.confirmPassword }}<br>
+            {% for error in form.confirmPassword.errors %}
+            <span class="error">{{ error }}</span>
+            {% endfor %}
+            {{ form.submit() }}
+        </form>
+        <p>Already have an account?<a href="{{ url_for('login') }}"> Login here</a></p>
+    </section>
+</div>
+
+{% endblock %}

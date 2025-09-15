@@ -1,0 +1,119 @@
+{% extends "user/base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user/dashboard.css') }}">
+<title>Home PAGE</title>
+{% endblock %}
+
+
+
+{% block content %}
+<div class="background">
+    <div class="leftPanel">
+        <h1>Welcome {{ user['firstName'] }} {{ user['lastName'] }}</h1>
+        <section class="cardInfo">
+            <h2>Card Management</h2>
+            <span class="card">
+                <h3>INCREASE <p>{{ endCardNumber }}</p>
+                </h3>
+                <span>{{ "{:,.2f}".format(userAccount.balance) }} <p>{{ user['currency'] }}</p></span>
+                <p>{{ userAccount.expiryDate.strftime("%m/%y") }} </p>
+            </span>
+        </section>
+        <h4>Last Transactions</h4>
+        <section class="transactions">
+            {% if transactions %}
+            {% for transaction in transactions %}
+            <div class="block">
+                {% if transaction.receiverId == g.user %}
+                <h5>{{ transaction['senderName'] }} {{ transaction['senderLastName'] }}</h5>
+                {% else %}
+                <h5>{{ transaction['receiverName'] }} {{ transaction['receiverLastName'] }}</h5>
+                {% endif%}
+                <p class="{{ 'positive ' if transaction.receiverId == g.user else 'negative'}}">
+                    <span>{{
+                        transaction['currency'] }}</span> {{ "{:,.2f}".format(transaction.amount) }}
+                </p>
+                <span>{{ transaction.transactionDate.strftime("%d %b %Y") }}</span>
+            </div>
+            {% endfor %}
+            {% endif %}
+            <div class="block viewMore">
+                <a href="{{ url_for('transaction')}}"><span class="material-symbols-outlined">
+                        view_list
+                    </span>
+                    <p class="clickable">View More</p>
+                </a>
+            </div>
+        </section>
+    </div>
+    <div class="rightPanel">
+        <h1>Stats</h1>
+        <div class="stats">
+            <h2>Balance</h2>
+            <div>
+                <section>
+                    <h2>Money In</h2>
+                    <p>{{ moneyIn }} {{ user['currency'] }}</p>
+                </section>
+                <section>
+                    <h2>Money Out</h2>
+                    <p>{{ moneyOut }} {{ user['currency'] }}</p>
+                </section>
+            </div>
+            <h2>Transactions</h2>
+            <div>
+                <section>
+                    <h2>Transfers In</h2>
+                    {% if numInTransfers is not none%}
+                    <p>{{ numInTransfers }}</p>
+                    {% else %}
+                    <p>0</p>
+                    {% endif %}
+                </section>
+                <section>
+                    <h2>Transfers Out</h2>
+                    {% if numOutTransfers is not none%}
+                    <p>{{ numOutTransfers }}</p>
+                    {% else %}
+                    <p>0</p>
+                    {% endif %}
+                </section>
+                <section>
+                    <h2>Average Amount In</h2>
+                    {% if inAmount is not none %}
+                    <p>{{ inAmount }} {{ user['currency']}}</p>
+                    {% else %}
+                    <p>No transfers</p>
+                    {% endif%}
+                </section>
+                <section>
+                    <h2>Average Amount Out</h2>
+                    {% if outAmount is not none %}
+                    <p>{{ outAmount }} {{ user['currency']}}</p>
+                    {% else %}
+                    <p>No transfers</p>
+                    {% endif%}
+                </section>
+                <section>
+                    <h2>Most Common Country</h2>
+                    {% if countryStats is not none %}
+                    <p>{{ countryStats['destinationCountry'] }} </p>
+                    {% else %}
+                    <p>No transfers</p>
+                    {% endif%}
+                </section>
+                <section>
+                    <h2>Most Common User</h2>
+                    {% if userStats["firstName"] is not none %}
+                    <p>{{ userStats["firstName"] }} {{ userStats['lastName']}} </p>
+                    {% else %}
+                    <p>No transfers</p>
+                    {% endif%}
+                </section>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

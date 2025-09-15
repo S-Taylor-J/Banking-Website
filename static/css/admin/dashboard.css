@@ -1,0 +1,126 @@
+h1 {
+  margin-bottom: 1em;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1em;
+  color: #9b9b9b;
+}
+p {
+  font-size: 1.5em;
+}
+h3 p {
+  margin-left: 8em;
+}
+h4 {
+  margin-bottom: 1em;
+}
+span span p {
+  font-size: 0.5em;
+}
+
+.leftPanel {
+  width: 100%;
+  padding: 2em 4em 0 4em;
+}
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2em;
+}
+
+section section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2em;
+}
+
+section div {
+  background-color: black;
+  border-radius: 1em;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  min-width: 15em;
+}
+.transactionInfo section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2em;
+}
+.transactionInfo section:last-child {
+  border-right: none;
+}
+
+.cardInfo {
+  margin-bottom: 2em;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  padding: 2em;
+  border-radius: 2em;
+  width: 25em;
+  height: 15em;
+  gap: 3em;
+}
+
+.card span {
+  font-size: 2em;
+}
+
+.card p {
+  display: inline;
+}
+
+.transactions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5em;
+  width: 80%;
+}
+
+.block {
+  background-color: #1e1e1e;
+  padding: 1em;
+  border-radius: 1em;
+  width: 100%;
+}
+.block h5 {
+  margin-bottom: 1em;
+}
+.block p {
+  margin-bottom: 1em;
+  font-size: 1.5em;
+}
+.block p span {
+  font-size: 0.75em;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
+
+.viewMore {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.viewMore p {
+  font-size: 1em;
+}

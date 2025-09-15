@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Index Page</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user/index.css') }}">
+
+{% endblock %}
+
+
+{% block content %}
+<nav>
+    <h1>Increase</h1>
+    <ul>
+        <li>Card</li>
+        <li>Feature</li>
+        <li>Security</li>
+        <li>Pricing</li>
+        <li class="clickable"><a href="{{ url_for('credits') }}">Credits</a></li>
+    </ul>
+    <span><a href="{{ url_for('login') }}">Log In</a></span>
+</nav>
+
+<div>
+    <section class="top">
+        <section>
+            <h2>Simplified</h2>
+            <h2>Secure</h2>
+            <h2>Seamless</h2>
+
+            <p>Control your money the way you want to.</p>
+            <span><a href="{{ url_for('register') }}">Get Started</a></span>
+        </section>
+    </section>
+    <section class="bottom">
+        <section>
+            <span class="material-symbols-outlined">
+                lock
+            </span>
+            <h3>100% Secure</h3>
+            <p>Our service is highly secured. There is no chance of getting hacked.</p>
+        </section>
+        <section>
+            <span class="material-symbols-outlined">
+                wallet
+            </span>
+            <h3>All in one</h3>
+            <p>
+                All your banking services in one place, available at your fingertips.
+            </p>
+        </section>
+        <section>
+            <span class="material-symbols-outlined">
+                rocket_launch
+            </span>
+            <h3>Super Fast</h3>
+            <p>
+                All you banking necessities are one click away. All done in a flash.
+            </p>
+        </section>
+
+    </section>
+</div>
+{% endblock %}

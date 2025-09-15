@@ -1,0 +1,80 @@
+{% extends 'admin/base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user/transaction.css') }}">
+<title>Admin Dashboard</title>
+{% endblock %}
+
+
+{% block content %}
+<div class="background">
+    <div class="leftPanel">
+        <h1>Transactions</h1>
+        <form class="formContainer" method="post" novalidate id="formContainerFilter" action="">
+            {{ form.hidden_tag() }}
+            <section>
+                <div>{{ form.minAmount.label }} {{ form.minAmount }}</div>
+                <div>{{ form.maxAmount.label }} {{ form.maxAmount }} </div>
+                <div>{{ form.currency.label }} {{ form.currency }}</div>
+                <div>{{ form.country.label }} {{ form.country }}</div>
+                <div>{{ form.recipientId.label }} {{ form.recipientId }} </div>
+                <div>{{ form.senderId.label }} {{ form.senderId}}</div>
+                <div>
+                    {% for subfield in form.moneyIO %}
+                    <label> {{ subfield.label.text}} {{ subfield }}</label>
+                    {% endfor %}
+                </div>
+                <div>{{ form.startDate.label }} {{ form.startDate }} </div>
+                <div>{{ form.endDate.label }} {{ form.endDate }}</div>
+            </section>
+            <section id="formContainerOrder">
+                <div>{{ form.amountAsc.label }} {{ form.amountAsc }}</div>
+                <div>{{ form.amountDec.label }} {{ form.amountDec }}</div>
+                <div>{{ form.countryAsc.label }} {{ form.countryAsc }}</div>
+                <div>{{ form.countryDec.label }} {{ form.countryDec }}</div>
+                <div>{{ form.dateAsc.label }} {{ form.dateAsc }}</div>
+                <div>{{ form.dateDes.label }} {{ form.dateDes }}</div>
+            </section>
+            <div>{{ form.submit }}</div>
+        </form>
+        <div class="transactions">
+            <table>
+                <tr>
+                    <th scope="col">Sender ID</th>
+                    <th scope="col">Receiver ID</th>
+                    <th scope="col">Amount (EUR)</th>
+                    <th scope="col">Currency</th>
+                    <th scope="col">Destination Country</th>
+                    <th scope="col">Date</th>
+                    <td class="buttons"><button type="button" id="showFilterForm">filter</button></td>
+                </tr>
+                {% if transactions %}
+                {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction['senderId'] }}</td>
+                    <td>{{ transaction['receiverId'] }}</td>
+                    <td>{{ "{:,.2f}".format(transaction.amount) }}</td>
+                    <td>{{ transaction['currency'] }}</td>
+                    <td>{{ transaction['destinationCountry'] }}</td>
+                    <td>{{ transaction['transactionDate'] }}</td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </table>
+        </div>
+        <div class="pagination">
+            {% if page > 1 %}
+            <a class="clickable" href="{{ url_for('adminTransactions', page=page-1) }}">Previous</a>
+            {% endif %}
+
+            <span>Page {{ page }} of {{ totalPages }}</span>
+
+            {% if page < totalPages %} <a class="clickable" href="{{ url_for('adminTransactions', page=page+1) }}">
+                Next</a>
+                {% endif %}
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/transaction.js')  }}"></script>
+
+{% endblock %}

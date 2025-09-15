@@ -1,0 +1,61 @@
+.formContainer {
+  background: black;
+  padding: 2em;
+  width: 18em;
+  margin-left: 1em;
+  display: none;
+  position: absolute;
+  top: 10em;
+  right: 6em;
+  z-index: 1;
+  border-radius: 2em;
+}
+.formContainer ul {
+  list-style: none;
+}
+
+.formContainer div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+}
+.formContainer > div:last-child {
+  justify-content: center;
+}
+
+#formContainerOrder input {
+  width: 1em;
+  margin-bottom: 1em;
+}
+
+.formContainer input,
+.formContainer select,
+.formContainer textarea {
+  width: 7em;
+  padding: 0.3em;
+  border: none;
+  box-sizing: border-box;
+}
+
+.formContainer textarea {
+  resize: none;
+  height: 1em;
+}
+
+.buttons {
+  padding: 0;
+}
+td button {
+  background-color: black;
+  color: white;
+  width: 5em;
+}
+
+tr:first-child {
+  border-bottom: 1px solid #7e7e7e;
+}
+
+a {
+  font-size: 1em;
+}

@@ -1,0 +1,85 @@
+{% extends "user/base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user/card.css') }}">
+<title>Card Information</title>
+{% endblock %}
+
+{% block content %}
+<div class="background">
+    <div class="leftPanel">
+        <h1>Card Information</h1>
+        <section class="cardInfo">
+            <span class="card">
+                <h3>INCREASE <p>{{ cardNumber }}</p>
+                </h3>
+                <span>{{ balance }} <p>{{ user['currency'] }}</p></span>
+                <p>{{ user['firstName']}} {{ user['lastName'] }}</p>
+                <span>
+                    <p>EXP</p> {{ expiryDate }} <p>CVC</p> {{ userAccount['CVC']}}
+                </span>
+            </span>
+        </section>
+    </div>
+    <div class="rightPanel">
+        <h1>User Details</h1>
+        <section>
+            <h2>Basic Information</h2>
+            <table>
+                <tr>
+                    <th scope="col">User ID</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Date of Birth</th>
+                </tr>
+                <tr>
+                    <td>{{ user['userId'] }}</td>
+                    <td>{{ user['firstName'] }} {{ user['lastName'] }}</td>
+                    <td>{{ user['userName'] }}</td>
+                    <td>{{ user['dob'] }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Currency</th>
+                    <th scope="col">Account Created</th>
+
+                </tr>
+                <tr>
+                    <td>{{ user['email'] }}</td>
+                    <td>{{ user['phoneNum'] }}</td>
+                    <td>{{ user['currency'] }}</td>
+                    <td>{{ user['createdAccount'] }}</td>
+                </tr>
+            </table>
+        </section>
+        <section>
+            <h2>Address Information</h2>
+            <table>
+                <tr>
+                    <th scope="col">Home Address</th>
+                    <th scope="col">City</th>
+                    <th scope="col">County</th>
+
+                </tr>
+                <tr>
+                    <td>{{ user['homeAddress'] }}</td>
+                    <td>{{ user['city'] }}</td>
+                    <td>{{ user['county'] }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Postal Code</th>
+                    <th scope="col">Country</th>
+                </tr>
+                <tr>
+                    <td>{{ user['postalCode'] }}</td>
+                    <td>{{ user['country'] }}</td>
+                </tr>
+            </table>
+        </section>
+
+    </div>
+</div>
+
+
+{% endblock %}

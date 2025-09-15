@@ -1,0 +1,92 @@
+.form-container {
+  background: black;
+  padding: 2em;
+  width: 18em;
+  margin-left: 1em;
+  display: none;
+  position: absolute;
+  top: 10em;
+  right: 6em;
+  z-index: 1;
+  border-radius: 2em;
+}
+.form-container ul {
+  list-style: none;
+}
+
+.form-container div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+}
+.form-container > div:last-child {
+  justify-content: center;
+}
+
+#formContainerOrder input {
+  width: 1em;
+  margin-bottom: 1em;
+}
+
+#formContainerOrder #submit {
+  width: 10em;
+  border: none;
+}
+#submit:hover {
+  background-color: green;
+  border: none;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+  width: 7em;
+  padding: 0.3em;
+  border: none;
+  border-radius: 0.3em;
+  font-size: 0.9em;
+  box-sizing: border-box;
+}
+
+.form-container textarea {
+  resize: none;
+  height: 1em;
+}
+
+table {
+  width: 95%;
+  border-collapse: collapse;
+  border-radius: 2em;
+}
+th,
+td {
+  padding: 1em;
+  text-align: left;
+  border: none;
+  width: 8em;
+}
+
+.buttons {
+  padding: 0;
+}
+td button {
+  background-color: black;
+  color: white;
+  width: 5em;
+}
+
+tr:first-child {
+  border-bottom: 1px solid #7e7e7e;
+}
+table a {
+  font-size: 1em;
+}
+
+.positive {
+  color: #71ee71;
+}
+
+.negative {
+  color: red;
+}

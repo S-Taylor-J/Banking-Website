@@ -1,0 +1,84 @@
+{% extends "user/base.html" %}
+
+{% block head %}
+<title>Transfer Page</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user/transfer.css') }}">
+{% endblock %}
+
+
+
+{% block content %}
+<div class="background">
+    <div class="leftPanel">
+        <h1>Transfer Money</h1>
+        <div class="transferInput">
+            <div class="progressContainer">
+                <div class="step {% if step >= 1 %}active{% endif %}">Step 1</div>
+                <div class="step {% if step >= 2 %}active{% endif %}">Step 2</div>
+            </div>
+            {% if step == 1 %}
+            <form action="" method="POST" class="formContainer" novalidate>
+                {{ form.hidden_tag() }}
+                <div>{{ form.userName }}</div>
+                {% for error in form.userName.errors %}
+                <span class="error">{{ error }}</span>
+                {% endfor %}
+                <div>{{ form.destinationCountry }} </div>
+                {% for error in form.destinationCountry.errors %}
+                <span class="error">{{ error }}</span>
+                {% endfor %}
+                <div>{{ form.userId }}</div>
+                <div>{{ form.amount }} {{ form.currency }}</div>
+                {% if form.amount.errors %}
+                {% for error in form.amount.errors %}
+                <span class="error">{{ error }}</span>
+                {% endfor %}
+                {% endif %}
+                <div>{{ form.description }} </div>
+                <div>{{ form.additionalInfo }}</div>
+                <div>{{ form.recipientEmail }}</div>
+                <div>{{ form.submit }}</div>
+                <span class="error">{{ message }}</span>
+            </form>
+            {% endif %}
+
+            {% if step == 2 %}
+            <div class="transferDetails">
+                {% if transaction %}
+                <section class="senderInfo">
+                    <p>{{ validUser['firstName'] }} {{ validUser['lastName'] }}</p>
+                    <p>{{ validUser['userId'] }}</p>
+                    <p>{{ transaction['reasonForTransfer'] }}</p>
+                    <p>{{ transaction['description'] }}</p>
+                    <p>{{ transaction['additionalInfo'] }}</p>
+                    <p>{{ transaction['recipientEmail'] }}</p>
+                </section>
+                <section>
+                    <div class="moneyInfo">
+                        <section>
+                            <p class="text">Amount</p>
+                            <p><span>{{ transaction['amount'] }}</span>
+                                {{ transaction['toCurrency'] }}</p>
+                            <p class="text">Balance</p>
+                            <p>{{ "{:,.2f}".format(senderAccount["balance"]) }} {{ transaction['fromCurrency'] }}</p>
+                        </section>
+                        <section>
+                            <p class="text">Transaction Fee</p>
+                            <p><span>{{ "{:,.2f}".format(transaction['fee']) }}</span> {{
+                                transaction['fromCurrency']
+                                }}</p>
+                        </section>
+                        <section>
+                            <p class="text">Transfer Date</p>
+                            <p><span>{{ transaction['transactionDate'] }}</span></p>
+                        </section>
+                    </div>
+                </section>
+                <form action="{{ url_for('confirmTransfer') }}" method="POST">
+                    <button type="submit" id="submit">Confirm Transaction</button>
+                </form>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+        {% endblock %}

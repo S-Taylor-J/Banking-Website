@@ -1,0 +1,58 @@
+.cardInfo {
+  margin-bottom: 2em;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--Main-bg-color);
+  padding: 2em;
+  border-radius: 2em;
+  width: 30em;
+  height: 20em;
+  gap: 2em;
+}
+
+.rightPanel {
+  width: 80%;
+  margin-left: -25em;
+  padding: 4em 1em 0em 2em;
+}
+
+.rightPanel section {
+  padding: 1.5em;
+  background-color: #1e1e1e;
+  border-radius: 1em;
+  margin-bottom: 2em;
+}
+
+.card span {
+  font-size: 2em;
+}
+
+.card p {
+  display: inline;
+}
+span span p {
+  font-size: 0.5em;
+}
+span p + p {
+  margin-left: 10em;
+}
+
+h1 {
+  margin-bottom: 1em;
+}
+h3 p {
+  margin-left: 6em;
+}
+
+th {
+  padding: 0.5em 0.5em 1em 0;
+  font-size: 0.8em;
+  color: rgb(153, 153, 153);
+}
+
+td {
+  padding: 0.5em 1em 1em 0;
+  font-size: 1.2em;
+}
